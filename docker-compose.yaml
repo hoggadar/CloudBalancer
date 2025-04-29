@@ -1,0 +1,75 @@
+services:
+  balancer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: balancer
+    ports:
+      - "8080:8080"
+    depends_on:
+      - backend1
+      - backend2
+      - backend3
+      - backend4
+      - backend5
+    networks:
+      - balancer-network
+
+  backend1:
+    build:
+      context: test
+      dockerfile: Dockerfile
+    container_name: backend1
+    environment:
+      - SERVER_PORT=8080
+      - SERVER_MESSAGE=BACKEND 1
+    networks:
+      - balancer-network
+
+  backend2:
+    build:
+      context: test
+      dockerfile: Dockerfile
+    container_name: backend2
+    environment:
+      - SERVER_PORT=8080
+      - SERVER_MESSAGE=BACKEND 2
+    networks:
+      - balancer-network
+
+  backend3:
+    build:
+      context: test
+      dockerfile: Dockerfile
+    container_name: backend3
+    environment:
+      - SERVER_PORT=8080
+      - SERVER_MESSAGE=BACKEND 3
+    networks:
+      - balancer-network
+
+  backend4:
+    build:
+      context: test
+      dockerfile: Dockerfile
+    container_name: backend4
+    environment:
+      - SERVER_PORT=8080
+      - SERVER_MESSAGE=BACKEND 4
+    networks:
+      - balancer-network
+
+  backend5:
+    build:
+      context: test
+      dockerfile: Dockerfile
+    container_name: backend5
+    environment:
+      - SERVER_PORT=8080
+      - SERVER_MESSAGE=BACKEND 5
+    networks:
+      - balancer-network
+
+networks:
+  balancer-network:
+    driver: bridge

@@ -1,0 +1,56 @@
+server:
+  port: 8080
+
+loadBalancer:
+  method: RoundRobin
+  healthCheckInterval: 10s
+
+logging:
+  environment: development
+  level: debug
+
+rateLimit:
+  enabled: true
+  defaultRate: 100.0
+  defaultBurst: 50
+
+backends:
+  - id: backend1
+    host: backend1
+    port: 8080
+    connectTimeout: 5s
+    readTimeout: 10s
+    maxConnection: 50
+    enabled: true
+
+  - id: backend2
+    host: backend2
+    port: 8080
+    connectTimeout: 5s
+    readTimeout: 10s
+    maxConnection: 50
+    enabled: true
+
+  - id: backend3
+    host: backend3
+    port: 8080
+    connectTimeout: 5s
+    readTimeout: 10s
+    maxConnection: 50
+    enabled: true
+
+  - id: backend4
+    host: backend4
+    port: 8080
+    connectTimeout: 5s
+    readTimeout: 10s
+    maxConnection: 50
+    enabled: true
+
+  - id: backend5
+    host: backend5
+    port: 8080
+    connectTimeout: 5s
+    readTimeout: 10s
+    maxConnection: 50
+    enabled: true 
